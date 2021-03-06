@@ -1,5 +1,7 @@
 # vim:et sts=2 sw=2 ft=zsh
 
+zmodload zsh/datetime
+
 prompt_asciiship_preexec() {
   prompt_asciiship_preexec_s=${EPOCHSECONDS}
 }
