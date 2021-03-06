@@ -1,18 +1,12 @@
 # vim:et sts=2 sw=2 ft=zsh
-#
-# A customizable version of the steeef theme from
-# https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/steeef.zsh-theme
-#
-# Requires the `git-info` zmodule to be included in the .zimrc file.
 
 prompt_asciiship_preexec() {
-  prompt_asciiship_preexec_s=${(%):-%D{%s}}
+  prompt_asciiship_preexec_s=${EPOCHSECONDS}
 }
 
 prompt_asciiship_precmd() {
   if (( prompt_asciiship_preexec_s )); then
-    local -ri now_s=${(%):-%D{%s}}
-    local -ri elapsed_s=$(( now_s - prompt_asciiship_preexec_s ))
+    local -ri elapsed_s=$(( EPOCHSECONDS - prompt_asciiship_preexec_s ))
     local -ri s=$(( elapsed_s%60))
     local -ri m=$(( (elapsed_s/60)%60 ))
     local -ri h=$(( elapsed_s/3600 ))
