@@ -56,6 +56,6 @@ if (( ${+functions[git-info]} )); then
 fi
 
 PS1='
-%(!.%B%F{red}%n%f%b in .${SSH_TTY:+"%B%F{yellow}%n%f%b in "})${SSH_TTY:+"%B%F{green}%m%f%b in "}%B%F{cyan}%~%f%b${(e)git_info[prompt]}${VIRTUAL_ENV:+" via %B%F{yellow}(${VIRTUAL_ENV:t})%b%f"}${_prompt_asciiship_elapsed_time}
+%(2L.%B%F{yellow}(%L)%f%b .)%(!.%B%F{red}%n%f%b in .${SSH_TTY:+"%B%F{yellow}%n%f%b in "})${SSH_TTY:+"%B%F{green}%m%f%b in "}%B%F{cyan}%~%f%b${(e)git_info[prompt]}${VIRTUAL_ENV:+" via %B%F{yellow}${VIRTUAL_ENV:t}%b%f"}${_prompt_asciiship_elapsed_time}
 %B%(1j.%F{blue}*%f .)%(?.%F{green}.%F{red}%? )%#%f%b '
 unset RPS1

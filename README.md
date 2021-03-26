@@ -10,6 +10,7 @@ What does it show?
 ------------------
 
   * On the top line:
+    * Value of `SHLVL` when shell level is greater than 1.
     * User name when root or in an SSH session.
     * Host name when in an SSH session.
     * Current directory.
