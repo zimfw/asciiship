@@ -1,6 +1,6 @@
 # vim:et sts=2 sw=2 ft=zsh
 
-VIRTUAL_ENV_DISABLE_PROMPT=1
+typeset -g VIRTUAL_ENV_DISABLE_PROMPT=1
 
 setopt nopromptbang prompt{cr,percent,sp,subst}
 
