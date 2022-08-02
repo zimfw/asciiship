@@ -30,6 +30,7 @@ What does it show?
     * `*` when there are background jobs running.
     * Exit code of last command, when it's not zero.
     * `#` when root, `%` otherwise.
+    * Keymap indicator.
 
 Requirements
 ------------

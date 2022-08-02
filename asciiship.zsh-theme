@@ -1,5 +1,23 @@
 # vim:et sts=2 sw=2 ft=zsh
 
+_prompt_asciiship_vimode() {
+  case ${KEYMAP} in
+    vicmd) print -n '%S%#%s' ;;
+    *) print -n '%#' ;;
+  esac
+}
+
+_prompt_asciiship_keymap_select() {
+  zle reset-prompt
+  zle -R
+}
+if autoload -Uz is-at-least && is-at-least 5.3; then
+  autoload -Uz add-zle-hook-widget && \
+      add-zle-hook-widget -Uz keymap-select _prompt_asciiship_keymap_select
+else
+  zle -N zle-keymap-select _prompt_asciiship_keymap_select
+fi
+
 typeset -g VIRTUAL_ENV_DISABLE_PROMPT=1
 
 setopt nopromptbang prompt{cr,percent,sp,subst}
@@ -31,5 +49,5 @@ fi
 
 PS1='
 %(2L.%B%F{yellow}(%L)%f%b .)%(!.%B%F{red}%n%f%b in .${SSH_TTY:+"%B%F{yellow}%n%f%b in "})${SSH_TTY:+"%B%F{green}%m%f%b in "}%B%F{cyan}%~%f%b${(e)git_info[prompt]}${VIRTUAL_ENV:+" via %B%F{yellow}${VIRTUAL_ENV:t}%b%f"}${duration_info}
-%B%(1j.%F{blue}*%f .)%(?.%F{green}.%F{red}%? )%#%f%b '
+%B%(1j.%F{blue}*%f .)%(?.%F{green}.%F{red}%? )$(_prompt_asciiship_vimode)%f%b '
 unset RPS1
