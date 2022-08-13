@@ -38,11 +38,11 @@ Requirements
 Requires Zim's [git-info] module to show git information, and [duration-info]
 module to show the last command duration.
 
-[Spaceship]: https://denysdovhan.com/spaceship-prompt/
+[Spaceship]: https://spaceship-prompt.sh/
 [Starship]: https://starship.rs/
 [git-info]: https://github.com/zimfw/git-info
 [git-info settings]: https://github.com/zimfw/git-info/blob/master/README.md#settings
-['detached HEAD' state]: http://gitfaq.org/articles/what-is-a-detached-head.html
+['detached HEAD' state]: https://git-scm.com/docs/git-checkout#_detached_head
 [venv]: https://docs.python.org/3/library/venv.html
 [duration-info]: https://github.com/zimfw/duration-info
 [duration-info settings]: https://github.com/zimfw/duration-info/blob/master/README.md#settings
