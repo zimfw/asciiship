@@ -12,7 +12,9 @@ What does it show?
     * Value of `SHLVL` when shell level is at least 2.
     * User name when root or in an SSH session.
     * Host name when in an SSH session.
-    * Current directory.
+    * Current directory. When in a git repo, the repo root directory is shown
+      underlined. This requires the [prompt-pwd] module, that can be customized
+      with additional [settings][prompt-pwd settings].
     * Git information when you are in a git repo. This requires the [git-info]
       module, that can be customized with additional [settings][git-info settings].
       The following information is shown:
@@ -35,11 +37,14 @@ What does it show?
 Requirements
 ------------
 
-Requires Zim Framework's [git-info] module to show git information, and
-[duration-info] module to show the last command duration.
+Requires Zim Framework's [prompt-pwd] module to show the current directory,
+[git-info] module to show git information and [duration-info] module to show the
+last command duration.
 
 [Spaceship]: https://spaceship-prompt.sh/
 [Starship]: https://starship.rs/
+[prompt-pwd]: https://github.com/zimfw/prompt-pwd
+[prompt-pwd settings]: https://github.com/zimfw/prompt-pwd/blob/master/README.md#settings
 [git-info]: https://github.com/zimfw/git-info
 [git-info settings]: https://github.com/zimfw/git-info/blob/master/README.md#settings
 ['detached HEAD' state]: https://git-scm.com/docs/git-checkout#_detached_head

@@ -19,6 +19,13 @@ typeset -g VIRTUAL_ENV_DISABLE_PROMPT=1
 setopt nopromptbang prompt{cr,percent,sp,subst}
 
 autoload -Uz add-zsh-hook
+
+# Depends on prompt-pwd module to show formatted current directory
+if (( ${+functions[prompt-pwd]} )); then
+  zstyle ':zim:prompt-pwd:git-root' format '%U%d%u'
+else
+  functions[prompt-pwd]='print ${(D)PWD}'
+fi
 # Depends on duration-info module to show last command duration
 if (( ${+functions[duration-info-preexec]} && ${+functions[duration-info-precmd]} )); then
   zstyle ':zim:duration-info' format ' took %B%F{yellow}%d%f%b'
@@ -43,6 +50,6 @@ if (( ${+functions[git-info]} )); then
 fi
 
 PS1='
-%(2L.%B%F{yellow}(%L)%f%b .)%(!.%B%F{red}%n%f%b in .${SSH_TTY:+"%B%F{yellow}%n%f%b in "})${SSH_TTY:+"%B%F{green}%m%f%b in "}%B%F{cyan}%~%f%b${(e)git_info[prompt]}${VIRTUAL_ENV:+" via %B%F{yellow}${VIRTUAL_ENV:t}%f%b"}${duration_info}
+%(2L.%B%F{yellow}(%L)%f%b .)%(!.%B%F{red}%n%f%b in .${SSH_TTY:+"%B%F{yellow}%n%f%b in "})${SSH_TTY:+"%B%F{green}%m%f%b in "}%B%F{cyan}$(prompt-pwd)%f%b${(e)git_info[prompt]}${VIRTUAL_ENV:+" via %B%F{yellow}${VIRTUAL_ENV:t}%f%b"}${duration_info}
 %B%(1j.%F{blue}*%f .)%(?.%F{green}.%F{red}%? )$(_prompt_asciiship_vimode)%f%b '
 unset RPS1
